@@ -1,14 +1,15 @@
+import { Container } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const Layout: FC = () => {
   return (
     <>
-      <nav>
-        <Link to="/">Todo</Link>
-        <Link to="/login">Log In</Link>
-      </nav>
-      <Outlet />
+      <Navbar />
+      <Container pt={20} as="section">
+        <Outlet />
+      </Container>
     </>
   );
 };
