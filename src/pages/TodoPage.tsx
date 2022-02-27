@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react';
 import { Button, Flex, useDisclosure } from '@chakra-ui/react';
 import TodoList from 'components/Todo/TodoList';
-import CreationModal from 'components/Todo/TodoModal';
 import { addTodo } from 'store/slices/todoSlice';
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 import { IList } from 'types';
+import TodoModal from 'components/Todo/TodoModal';
 
 const Todo: FC = () => {
   const dispatch = useAppDispatch();
@@ -23,10 +23,10 @@ const Todo: FC = () => {
     <Flex flexDirection="column" as="main">
       <TodoList currentList={currentList} setListId={setListId} />
       <Button onClick={onOpen}>+</Button>
-      <CreationModal
+      <TodoModal
         isOpen={isOpen}
         onClose={onClose}
-        items={lists}
+        lists={lists}
         currentList={currentList}
         saveCallback={saveTodo}
       />

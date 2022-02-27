@@ -1,35 +1,24 @@
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  FormControl,
-  FormLabel,
-  Input,
-  ModalFooter,
-  Button,
-  Select,
-} from '@chakra-ui/react';
+import { Input, Select } from '@chakra-ui/react';
+import FormField from 'components/UI/Form/FormField';
+import ModalBase from 'components/UI/Modal/ModalBase';
 import { useState } from 'react';
 import { IList } from 'types';
 
-interface ICreationModalProps {
-  items: IList[];
+interface IProps {
+  lists: IList[];
   isOpen: boolean;
   currentList: IList;
   onClose: () => void;
   saveCallback: (value: string, listId: string) => void;
 }
 
-const CreationModal = ({
-  items,
+const TodoModal = ({
+  lists,
   isOpen,
   onClose,
   currentList,
   saveCallback,
-}: ICreationModalProps) => {
+}: IProps) => {
   const [value, setValue] = useState('');
   const [listId, setListId] = useState(currentList.id);
 
@@ -42,46 +31,35 @@ const CreationModal = ({
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Create todo</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <FormControl>
-              <FormLabel>Title</FormLabel>
-              <Input
-                placeholder="Title"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                maxLength={56}
-              />
-            </FormControl>
-            <FormControl mt={4}>
-              <FormLabel>List</FormLabel>
-              <Select
-                defaultValue={listId}
-                onChange={(e) => setListId(e.target.value)}
-              >
-                {items.map((item) => (
-                  <option value={item.id} key={item.id}>
-                    {item.title}
-                  </option>
-                ))}
-              </Select>
-            </FormControl>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" onClick={clickHandler} mr={3}>
-              Save
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <ModalBase
+        isOpen={isOpen}
+        onClose={onClose}
+        saveClickHandler={clickHandler}
+        modalTitle="Create todo"
+      >
+        <FormField title="Title">
+          <Input
+            placeholder="Title"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            maxLength={56}
+          />
+        </FormField>
+        <FormField title="List">
+          <Select
+            defaultValue={listId}
+            onChange={(e) => setListId(e.target.value)}
+          >
+            {lists.map((list) => (
+              <option value={list.id} key={list.id}>
+                {list.title}
+              </option>
+            ))}
+          </Select>
+        </FormField>
+      </ModalBase>
     </>
   );
 };
 
-export default CreationModal;
+export default TodoModal;
