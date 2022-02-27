@@ -1,3 +1,5 @@
+![Alt text](/doc/thumb.png?raw=true 'Todo App Preview')
+
 # Todonimo App
 
 React Todo App with Chakra UI
