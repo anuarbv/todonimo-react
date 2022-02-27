@@ -5,14 +5,14 @@ import ModalBase from 'components/UI/Modal/ModalBase';
 import { useAppDispatch } from 'hooks/useRedux';
 import { addList, updateList } from 'store/slices/listSlice';
 
-interface IProps {
+interface Props {
   isOpen: boolean;
   onClose: () => void;
   type: string;
   listId: string;
 }
 
-const ListModal = ({ isOpen, onClose, listId, type }: IProps) => {
+const ListModal = ({ isOpen, onClose, listId, type }: Props) => {
   const dispatch = useAppDispatch();
   const initialRef = useRef<HTMLInputElement>(null);
 

@@ -4,7 +4,7 @@ import ModalBase from 'components/UI/Modal/ModalBase';
 import { useState } from 'react';
 import { IList } from 'types';
 
-interface IProps {
+interface Props {
   lists: IList[];
   isOpen: boolean;
   currentList: IList;
@@ -18,7 +18,7 @@ const TodoModal = ({
   onClose,
   currentList,
   saveCallback,
-}: IProps) => {
+}: Props) => {
   const [value, setValue] = useState('');
   const [listId, setListId] = useState(currentList.id);
 

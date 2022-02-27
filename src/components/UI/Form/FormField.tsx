@@ -1,12 +1,12 @@
 import { FormControl, FormLabel } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
-interface IProps {
+interface Props {
   children: ReactNode;
   title: string;
 }
 
-const FormField = ({ children, title }: IProps) => {
+const FormField = ({ children, title }: Props) => {
   return (
     <FormControl>
       <FormLabel>{title}</FormLabel>

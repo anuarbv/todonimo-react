@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
 
-interface IProps {
+interface Props {
   children: ReactNode;
   isOpen: boolean;
   onClose: () => void;
@@ -24,7 +24,7 @@ const ModalBase = ({
   onClose,
   modalTitle,
   saveClickHandler,
-}: IProps) => {
+}: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />

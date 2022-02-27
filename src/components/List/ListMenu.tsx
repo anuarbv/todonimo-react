@@ -19,12 +19,12 @@ import { removeList } from 'store/slices/listSlice';
 import { IList } from 'types';
 import ListModal from './ListModal';
 
-interface IListMenuProps {
+interface Props {
   currentList: IList;
   setListId: (listId: string) => void;
 }
 
-const ListMenu = ({ setListId, currentList }: IListMenuProps) => {
+const ListMenu = ({ setListId, currentList }: Props) => {
   const { lists } = useAppSelector((state) => state.lists);
   const dispatch = useAppDispatch();
   const toast = useToast();
